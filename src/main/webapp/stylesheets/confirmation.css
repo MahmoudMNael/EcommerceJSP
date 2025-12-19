@@ -1,0 +1,132 @@
+:root {
+    --primary: #2bee79;
+    --bg: #102217;
+    --surface: #1a2c22;
+    --text: #ffffff;
+    --muted: #9db9a8;
+    --border: #28392f;
+    --radius: 16px;
+    --radius-full: 9999px;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    --shadow-hover: 0 0 30px -10px rgba(43, 238, 121, 0.3);
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: 'Spline Sans', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+}
+
+/* layout */
+.container {
+    width: 65%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.site-header {
+    border-bottom: 1px solid var(--border);
+}
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+}
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-name {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+/* cart button */
+.icon-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    border: none;
+    border-radius: var(--radius-full);
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.icon-btn:hover {
+    background: var(--primary);
+    color: #000;
+    transform: translateY(-2px);
+}
+.badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(25%, -25%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: var(--radius-full);
+    background: var(--primary);
+    color: #000;
+    font-size: 10px;
+    font-weight: 800;
+    border: 2px solid var(--bg);
+}
+
+/* footer */
+.site-footer {
+    width: 100%;
+    border-top: 1px solid var(--border);
+    margin-top: 80px;
+}
+.footer-inner {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 32px 20px;
+}
+.links {
+    display: flex;
+    gap: 32px;
+}
+.link {
+    font-size: 14px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.link:hover {
+    color: var(--primary);
+}
+.copy {
+    font-size: 14px;
+    color: var(--muted);
+}
+
+/* focus */
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
