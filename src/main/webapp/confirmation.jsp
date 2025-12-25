@@ -12,7 +12,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-	<title>Order Confirmation</title>
+	<title>The Store - Order Confirmation</title>
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com" rel="preconnect" />
 	<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
@@ -78,9 +78,46 @@
 			<h1 class="brand-name">The Store</h1>
 		</div>
 		
-		<button class="icon-btn">
-			<span class="material-symbols-outlined">shopping_cart</span>
-		</button>
+		<div class="nav-actions">
+			<!-- Profile Dropdown -->
+			<div class="profile-dropdown">
+				<button class="profile-btn">
+					<div class="profile-avatar">
+						<span class="material-symbols-outlined">person</span>
+					</div>
+					<div class="profile-info">
+						<span class="profile-label">Points</span>
+						<span class="profile-points">${currentCustomer.loyaltyPoints}</span>
+					</div>
+				</button>
+				<div class="profile-menu">
+					<div class="profile-menu-inner">
+						<div class="profile-header">
+							<p class="points-label">Loyalty Points</p>
+							<p class="points-value">${currentCustomer.loyaltyPoints}</p>
+						</div>
+						<a class="menu-item" href="/profile">
+							<span class="material-symbols-outlined">account_circle</span>
+							Profile
+						</a>
+						<a class="menu-item" href="/order-history">
+							<span class="material-symbols-outlined">history</span>
+							Order History
+						</a>
+						<div class="menu-divider"></div>
+						<a class="menu-item menu-item-danger" href="/logout">
+							<span class="material-symbols-outlined">logout</span>
+							Sign Out
+						</a>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Cart Button -->
+			<button class="icon-btn" onclick="window.location.href='/cart'">
+				<span class="material-symbols-outlined">shopping_cart</span>
+			</button>
+		</div>
 	</nav>
 </header>
 

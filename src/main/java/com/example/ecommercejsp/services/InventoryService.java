@@ -31,4 +31,27 @@ public class InventoryService {
 			return null;
 		}
 	}
+	
+	public Product getProductById(Integer productId) {
+		HttpClient client = HttpClient.newHttpClient();
+		HttpRequest request = HttpRequest.newBuilder()
+				.uri(URI.create(baseUrl + "/check/" + productId))
+				.GET()
+				.build();
+		
+		try {
+			HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+			int status = response.statusCode();
+			if (status >= 200 && status < 300) {
+				String json = response.body();
+				return Product.fromJson(json);
+			}
+			return null;
+		} catch (IOException | InterruptedException e) {
+			if (e instanceof InterruptedException) {
+				Thread.currentThread().interrupt();
+			}
+			return null;
+		}
+	}
 }

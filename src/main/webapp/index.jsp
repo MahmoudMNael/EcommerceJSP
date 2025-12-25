@@ -6,14 +6,40 @@
 	<meta charset="UTF-8" />
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<title>The Store - Home</title>
+	<link href="https://fonts.googleapis.com" rel="preconnect" />
+	<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
 	<link
-			href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;display=swap"
 			rel="stylesheet"
 	/>
 	<link
-			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
 			rel="stylesheet"
 	/>
+	<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+	<script id="tailwind-config">
+		tailwind.config = {
+			darkMode: 'class',
+			theme: {
+				extend: {
+					colors: {
+						primary: '#2bee79',
+						'primary-hover': '#25cf69',
+						'background-light': '#f6f8f7',
+						'background-dark': '#102217',
+						'surface-dark': '#152a1e',
+						'surface-light': '#ffffff',
+					},
+					fontFamily: {
+						display: ['Spline Sans', 'sans-serif'],
+						body: ['Spline Sans', 'sans-serif'],
+					},
+					borderRadius: { DEFAULT: '1rem', lg: '2rem', xl: '3rem', full: '9999px' },
+				},
+			},
+		};
+	</script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 	<link rel="stylesheet" href="stylesheets/index.css" />
 </head>
 <body>
@@ -24,9 +50,46 @@
 			<h1 class="brand-name">The Store</h1>
 		</div>
 		
-		<button class="icon-btn" onclick="window.location.href='/cart'">
-			<span class="material-symbols-outlined">shopping_cart</span>
-		</button>
+		<div class="nav-actions">
+			<!-- Profile Dropdown -->
+			<div class="profile-dropdown">
+				<button class="profile-btn">
+					<div class="profile-avatar">
+						<span class="material-symbols-outlined">person</span>
+					</div>
+					<div class="profile-info">
+						<span class="profile-label">Points</span>
+						<span class="profile-points">${currentCustomer.loyaltyPoints}</span>
+					</div>
+				</button>
+				<div class="profile-menu">
+					<div class="profile-menu-inner">
+						<div class="profile-header">
+							<p class="points-label">Loyalty Points</p>
+							<p class="points-value">${currentCustomer.loyaltyPoints}</p>
+						</div>
+						<a class="menu-item" href="/profile">
+							<span class="material-symbols-outlined">account_circle</span>
+							Profile
+						</a>
+						<a class="menu-item" href="/order-history">
+							<span class="material-symbols-outlined">history</span>
+							Order History
+						</a>
+						<div class="menu-divider"></div>
+						<a class="menu-item menu-item-danger" href="/logout">
+							<span class="material-symbols-outlined">logout</span>
+							Sign Out
+						</a>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Cart Button -->
+			<button class="icon-btn" onclick="window.location.href='/cart'">
+				<span class="material-symbols-outlined">shopping_cart</span>
+			</button>
+		</div>
 	</nav>
 </header>
 
@@ -93,5 +156,6 @@
 </footer>
 
 <script src="scripts/index.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </body>
 </html>

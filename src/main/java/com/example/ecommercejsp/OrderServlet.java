@@ -1,7 +1,9 @@
 package com.example.ecommercejsp;
 
 import com.example.ecommercejsp.models.Cart;
+import com.example.ecommercejsp.models.Customer;
 import com.example.ecommercejsp.models.Order;
+import com.example.ecommercejsp.services.CustomerService;
 import com.example.ecommercejsp.services.OrderService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -14,6 +16,7 @@ import java.io.IOException;
 @WebServlet("/order")
 public class OrderServlet extends HttpServlet {
 	private OrderService orderService;
+	private CustomerService customerService;
 	private PersistenceLayer persistenceLayer;
 	
 	@Override
@@ -30,6 +33,9 @@ public class OrderServlet extends HttpServlet {
 		
 		if (order != null) {
 			cart.clearCart();
+			
+			customerService = new CustomerService();
+			customerService.updateCustomerLoyaltyPoints(order);
 			
 			req.setAttribute("order", order);
 			req.getRequestDispatcher("/confirmation.jsp").forward(req, resp);

@@ -1,10 +1,12 @@
 package com.example.ecommercejsp;
 
 import com.example.ecommercejsp.models.Cart;
+import com.example.ecommercejsp.models.Customer;
 
 public class PersistenceLayer {
 	private static volatile PersistenceLayer instance;
 	private Cart cart;
+	private Customer currentCustomer;
 	
 	private PersistenceLayer() {
 		this.cart = new Cart();
@@ -28,5 +30,13 @@ public class PersistenceLayer {
 	
 	public void setCart(Cart cart) {
 		this.cart = cart;
+	}
+	
+	public Customer getCurrentCustomer() {
+		return currentCustomer;
+	}
+	
+	public void setCurrentCustomer(Customer currentCustomer) {
+		this.currentCustomer = currentCustomer;
 	}
 }

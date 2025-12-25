@@ -1,5 +1,7 @@
 package com.example.ecommercejsp.models;
 
+import com.example.ecommercejsp.exceptions.OutOfStockException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +48,7 @@ public class Cart {
 		for (CartItem item : items) {
 			if (item.getProduct().getId().equals(product.getId())) {
 				if (item.getQuantity() >= item.getProduct().getQuantityAvailable()) {
-					return;
+					throw new OutOfStockException("The item is out of stock!", item.getProduct());
 				}
 				item.setQuantity(item.getQuantity() + 1);
 				return;

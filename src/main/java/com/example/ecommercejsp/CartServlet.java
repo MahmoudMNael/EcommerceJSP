@@ -1,5 +1,6 @@
 package com.example.ecommercejsp;
 
+import com.example.ecommercejsp.exceptions.OutOfStockException;
 import com.example.ecommercejsp.models.Cart;
 import com.example.ecommercejsp.models.Product;
 import com.example.ecommercejsp.services.PricingService;
@@ -64,7 +65,12 @@ public class CartServlet extends HttpServlet {
 		
 		// Add to cart
 		Cart cart = persistenceLayer.getCart();
-		cart.addItem(product);
+		try {
+			cart.addItem(product);
+		} catch (OutOfStockException e) {
+			resp.sendError(HttpServletResponse.SC_CONFLICT, e.getMessage());
+			return;
+		}
 		
 		// Success response
 		resp.setStatus(HttpServletResponse.SC_CREATED);
