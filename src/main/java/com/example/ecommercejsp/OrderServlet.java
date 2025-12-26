@@ -29,7 +29,7 @@ public class OrderServlet extends HttpServlet {
 		Cart cart = persistenceLayer.getCart();
 		
 		orderService = new OrderService();
-		Order order = orderService.placeOrder(cart, 1);
+		Order order = orderService.placeOrder(cart, persistenceLayer.getCurrentCustomer().getId());
 		
 		if (order != null) {
 			cart.clearCart();
