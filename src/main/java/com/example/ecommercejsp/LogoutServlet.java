@@ -1,5 +1,6 @@
 package com.example.ecommercejsp;
 
+import com.example.ecommercejsp.models.Cart;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -14,6 +15,7 @@ public class LogoutServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PersistenceLayer persistenceLayer = PersistenceLayer.getInstance();
 		persistenceLayer.setCurrentCustomer(null);
+		persistenceLayer.setCart(new Cart());
 		
 		resp.sendRedirect(req.getContextPath() + "/");
 	}
